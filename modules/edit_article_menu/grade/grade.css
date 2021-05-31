@@ -1,0 +1,7 @@
+.rating-group input {
+  display: none;
+}
+.rating-group label {
+  font-size: 2em;
+  cursor: pointer;
+}

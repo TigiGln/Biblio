@@ -1,0 +1,115 @@
+body 
+{
+  display: flex;
+  flex-wrap: nowrap;
+
+}
+
+/* Menu */
+.menu 
+{
+  height: 100vh;
+  height: -webkit-fill-available;
+}
+
+.menu .active
+{
+    background-color: #31D2F2 !important;
+}
+
+.menu .nav-link:hover 
+{
+    transition: background-color 0.25s;
+    background-color: #31D2F2;
+}
+
+.resizer 
+{
+  width: 0.5em;
+  min-width: 0.5em;
+  max-width: 0.5em;
+}
+
+.resizer:hover 
+{
+  cursor: col-resize;
+}
+
+
+/* Tab */
+.note, .note:hover 
+{
+  color: gray;
+  text-decoration: none;
+}
+
+legend 
+{
+  text-decoration: underline #56b9c7;
+}
+/* articles */
+.article-notes 
+{
+  height: 100vh;
+  height: -webkit-fill-available;
+}
+
+.article-notes-title 
+{
+  color: #31D2F2 !important;
+}
+
+/* insertion */
+h1, h2, h3, h4, h5 
+{
+  color: #31D2F2 !important;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar 
+{
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb 
+{
+  background: #7D74B6;
+}
+::-webkit-scrollbar-thumb:hover
+{
+  background: #968bdb
+}
+::-webkit-scrollbar-track
+{
+  background: rgba(0, 0, 0, 0.03);
+}
+h1
+{
+    display: inline;
+    text-align: center;
+}
+.popover 
+{
+    max-width: 50%;
+}
+
+.popover-content 
+{
+    word-wrap: break-word;
+    white-space: pre-line;
+}
+.survol_authors-inner
+{
+  white-space: pre-line;
+}
+#info_add
+{
+    display: inline; 
+}
+ /* Fake place holder */
+ [contenteditable=true]:empty:before {
+  content: attr(placeholder);
+  pointer-events: none;
+  display: block;
+  color: gray;
+}

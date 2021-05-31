@@ -1,0 +1,14 @@
+.popover 
+{
+    max-width: 50%;
+}
+
+.popover-content 
+{
+    word-wrap: break-word;
+}
+
+.toast-body 
+{
+	text-align: right;
+}

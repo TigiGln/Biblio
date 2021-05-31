@@ -1,0 +1,77 @@
+/* Editors */
+#content {
+  background-color: #f7f7f7;
+}
+
+#selection {
+  max-width: 20em;
+}
+.selected {
+  height: 5em;
+  max-height: 5em;
+}
+.thread {
+  height: 20em;
+  max-height: 20em;
+  min-height: 20em;
+}
+.annotateToolbar {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0);
+}
+
+/* Action Buttons */
+
+#annotateColorPicker {
+  border: none;
+  width: 0.8em;
+  background-color: none;
+  padding: 0px;
+}
+
+.annotateAction {
+  transition: 0.2s ease all;
+}
+.annotateAction:hover {
+  background-color: #56b9c7;
+  cursor: pointer;
+}
+.annotateAction img {
+  width: 0.8em;
+}
+
+/* Content */
+#annotateArea {
+  padding: 15px 12px;
+  line-height: 1.5;
+  max-height: 10vh;
+  min-height: 10vh;
+  height: 10vh;
+  overflow-y: auto;
+}
+
+#annotatesReply {
+  outline: none;
+  width: 100%;
+  overflow-y: auto;
+}
+
+#annotateVisualView {
+  outline: none;
+}
+
+#annotateHtmlView {
+  outline: none;
+  display: none;
+  border: none;
+  resize: none;
+  width: 100%;
+  background-color: #f7f7f7;
+}
+
+/* Temp Tag border */
+#temp {
+  display: inline-block;
+  border-width: 2px;
+  border-style: double;
+  border-color: #56b9c7;
+}

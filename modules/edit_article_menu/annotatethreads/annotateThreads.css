@@ -1,0 +1,19 @@
+/* Editors */
+#selection {
+  max-width: 20em;
+}
+.selected {
+  height: 5em;
+  max-height: 5em;
+}
+.thread {
+  height: 20em;
+  max-height: 20em;
+  min-height: 20em;
+}
+
+#annotatesReply {
+  outline: none;
+  width: 100%;
+  overflow-y: auto;
+}

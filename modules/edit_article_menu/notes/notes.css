@@ -1,0 +1,45 @@
+/* Editors */
+#content {
+  background-color: #f7f7f7;
+}
+
+.notesThread {
+  height: 20em;
+  resize: vertical;
+}
+
+/* Action Buttons */
+
+.notesAction {
+  transition: 0.2s ease all;
+}
+.notesAction:hover {
+  background-color: #56b9c7;
+  cursor: pointer;
+}
+.notesAction img {
+  width: 0.8em;
+}
+
+/* Content */
+#notesArea {
+  padding: 15px 12px;
+  line-height: 1.5;
+  height: 10vh;
+  overflow-y: auto;
+}
+
+#notesVisualView {
+  outline: none;
+  background: transparent;
+  width: 100%;
+}
+
+#notesHtmlView {
+  outline: none;
+  display: none;
+  border: none;
+  resize: none;
+  width: 100%;
+  background: transparent;
+}
