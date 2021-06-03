@@ -23,23 +23,22 @@ function load_lien()
 
 function add_ec_num(input)
 {
-    //lien = input.previousElementSibling.getAttribute('href');
-    //lien = lien.split('ec_num=')[0] + 'ec_num=';
-    if (input.value == '')
-    {
-        //listLineAddFunc[k][0].style.pointerEvents = 'none';
-        input.previousElementSibling.removeAttribute('href')
-        input.previousElementSibling.style.color = 'black';
-        input.previousElementSibling.style.textDecoration = "none";
-    }
-    else
+    //console.log(input.previousElementSibling);
+    if (input.value != '' && /^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$/.test(input.value))
     {
         input.previousElementSibling.setAttribute('href', lien + input.value)
         input.previousElementSibling.style.color = '#0044DD';
         input.previousElementSibling.style.textDecoration = "underline";
         input.previousElementSibling.style.pointerEvents = 'auto';
+    }
+    else
+    {
+        input.previousElementSibling.style.pointerEvents = 'none';
+        input.previousElementSibling.style.color = 'black';
+        input.previousElementSibling.style.textDecoration = "none";
 
     }  
+    
 }
 
 function listen_input(input_prot_access)

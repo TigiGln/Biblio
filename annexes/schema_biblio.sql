@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mar. 18 mai 2021 à 13:46
+-- Généré le : mer. 02 juin 2021 à 15:58
 -- Version du serveur :  10.3.29-MariaDB-0ubuntu0.20.04.1
 -- Version de PHP : 7.4.3
 
@@ -43,6 +43,8 @@ CREATE TABLE `article` (
   `user` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
 -- Structure de la table `authors`
 --
@@ -65,6 +67,18 @@ CREATE TABLE `author_article` (
   `position` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `general_note`
+--
+
+CREATE TABLE `general_note` (
+  `id_article` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `general_note` mediumtext NOT NULL,
+  `date_note` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -86,12 +100,10 @@ CREATE TABLE `note` (
 
 CREATE TABLE `prot_access_table` (
   `id_article` int(11) NOT NULL,
-  `prot_access` varchar(30) NOT NULL,
-  `entry_id_cazy` int(11) DEFAULT NULL
+  `prot_access` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-
-
+-- --------------------------------------------------------
 
 --
 -- Structure de la table `status`
@@ -110,7 +122,7 @@ INSERT INTO `status` (`id_status`, `name_status`) VALUES
 (1, 'undefined'),
 (2, 'tasks'),
 (3, 'processed'),
-(4, 'reject');
+(4, 'rejected');
 
 -- --------------------------------------------------------
 
@@ -159,6 +171,13 @@ ALTER TABLE `author_article`
   ADD KEY `id_article` (`id_article`);
 
 --
+-- Index pour la table `general_note`
+--
+ALTER TABLE `general_note`
+  ADD KEY `id_article` (`id_article`),
+  ADD KEY `id_user` (`id_user`);
+
+--
 -- Index pour la table `note`
 --
 ALTER TABLE `note`
@@ -191,13 +210,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id_article` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_article` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `authors`
 --
 ALTER TABLE `authors`
-  MODIFY `id_author` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=206;
+  MODIFY `id_author` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `status`
@@ -209,7 +228,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Contraintes pour les tables déchargées
@@ -227,6 +246,13 @@ ALTER TABLE `article`
 ALTER TABLE `author_article`
   ADD CONSTRAINT `author_article_ibfk_1` FOREIGN KEY (`id_author`) REFERENCES `authors` (`id_author`),
   ADD CONSTRAINT `author_article_ibfk_2` FOREIGN KEY (`id_article`) REFERENCES `article` (`id_article`);
+
+--
+-- Contraintes pour la table `general_note`
+--
+ALTER TABLE `general_note`
+  ADD CONSTRAINT `general_note_ibfk_1` FOREIGN KEY (`id_article`) REFERENCES `article` (`id_article`),
+  ADD CONSTRAINT `general_note_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 
 --
 -- Contraintes pour la table `note`

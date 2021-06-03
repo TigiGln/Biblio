@@ -141,13 +141,12 @@
                 print_r($db->errorInfo());
             }
         }
-        public function add_prot_access($table, $id_article, $prot_access, $entry_id)
+        public function add_prot_access($table, $id_article, $prot_access)
         {
             //$request = $this->db->prepare("INSERT INTO $table1(id_article, prot_access) VALUES(SELECT id_article, :prot_access FROM $table2 WHERE num_access = :num_access)");
-            $request = $this->db->prepare("INSERT INTO $table(id_article, prot_access, entry_id_cazy) VALUES(:id_article, :prot_access, :entry_id_cazy)");
+            $request = $this->db->prepare("INSERT INTO $table(id_article, prot_access) VALUES(:id_article, :prot_access)");
             $request->bindValue(":id_article", $id_article);
             $request->bindValue(":prot_access", $prot_access);
-            $request->bindValue(":entry_id_cazy", $entry_id);
             $request->execute();
             if (!$request) 
             {

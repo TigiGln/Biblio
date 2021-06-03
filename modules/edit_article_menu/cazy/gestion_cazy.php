@@ -4,7 +4,7 @@ require "../../../POO/class_manager_bd.php";
 ?>
 <?php
     ob_start();
-    include($position . '/views/header.php');//j'inclus le header
+    include('../../../views/header.php');//j'inclus le header
     ob_end_clean();
 ?>
 <?php
@@ -16,7 +16,6 @@ function add_prot_access($num_access, $prot_access, $manager)
     }
     else
     {
-        echo 'add';
         $num_access = strip_tags($num_access);
         $prot_access = strip_tags($prot_access);
         $id_article_in_article = $manager->db->prepare("SELECT id_article FROM article WHERE num_access = '$num_access'");
@@ -52,7 +51,6 @@ function delete_prot_access($prot_access, $manager)
     else
     {
         $prot_access = strip_tags($prot_access);
-    
         $delete_prot_access = $manager->db->prepare("DELETE FROM `prot_access_table` WHERE prot_access = '$prot_access'");
         $delete_prot_access->execute();
         if($delete_prot_access)

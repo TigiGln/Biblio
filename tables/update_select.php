@@ -4,9 +4,6 @@
     require "../POO/class_manager_bd.php";
     require "function.php";
     require "request_prot_access.php";
-    require "../POO/manager_cazy.class.php";
-    #creation of the object allowing to act on the cazy database 
-    $manager_cazy = new ManagerCazy('10.1.22.207', 'cazy_7', 'glyco', 'Horror3');
 ?>
 <?php
     include('../views/header.php');//j'inclus le header
@@ -32,10 +29,9 @@
                 $article = $manager->get('num_access', $_GET['num_acces'], 'article');
                 foreach ($list_prot_access as $prot_access)
                 {
-                    $entry_id = $manager_cazy->get_entryid($prot_access);
                     if ($manager->get_exist_multiple('prot_access_table', 'id_article', $article['id_article'], 'prot_access',  $prot_access) == false)//Check if it does not already exist
                     {
-                        $manager->add_prot_access('prot_access_table', $article['id_article'] , $prot_access, $entry_id);//adds the prot access found
+                        $manager->add_prot_access('prot_access_table', $article['id_article'] , $prot_access);//adds the prot access found
                         $nb_prot_access++;
                     }
                 } 
