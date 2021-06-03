@@ -268,20 +268,20 @@
             $requete->execute();
             if($requete)
             {
-               echo $fields . ' update successfully completed <br>';
+               echo "<div class='alert alert-info' role='alert'>" . $fields . ' update successfully completed <br>';
                if ($fields == 'user')
                {
-                    echo "The article now belongs to " . $modif . "<br>";
+                    echo "The article now belongs to " . $modif . "<br></div>";
                }
                else
                {
-                   echo "The article has the status: " . $modif . "<br>";
+                   echo "The article has the status: " . $modif . "<br></div>";
                }
                 
             }
             else
             {
-                echo "a problem occurred when updating the" . $fields;
+                echo "<div class='alert alert-danger' role='alert'>a problem occurred when updating the" . $fields . '</div>';
             }
 
         }

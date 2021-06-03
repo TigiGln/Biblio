@@ -23,7 +23,7 @@ function changeSelectAsync(numSelect, statusInitial)
                     }
                     else
                     {
-                        document.getElementById('info_change').innerHTML += 'a problem has arisen';  
+                        document.getElementById('info_change').innerHTML += '<div class="alert alert-danger" role="alert">a problem has arisen</div>';  
                     }
                 }
             };

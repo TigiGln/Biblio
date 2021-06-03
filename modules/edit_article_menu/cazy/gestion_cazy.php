@@ -27,17 +27,17 @@ function add_prot_access($num_access, $prot_access, $manager)
             $valid = $manager->add_prot_access('prot_access_table', $id_article, $prot_access, null);
             if($valid != "PDO::errorInfo():")
             {
-                echo 'prot_access ajouté';
+                echo 'add prot_access';
             }
             else
             {
-                echo "le numéro d'accession n'a pas pu être ajouté suite à une erreur"; 
+                echo "the accession number could not be added due to an error"; 
             }
 
         }
         else
         {
-            echo "Le numéro d'accession existe déjà"; 
+            echo "The accession number already exists"; 
         }
         
     }
@@ -59,7 +59,7 @@ function delete_prot_access($prot_access, $manager)
         }
         else
         {
-            echo "le numéro d'accession n'a pas pu être supprimé suite à une erreur"; 
+            echo "the accession number could not be deleted due to an error"; 
         }
 
         

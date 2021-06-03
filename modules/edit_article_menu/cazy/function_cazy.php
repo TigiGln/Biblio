@@ -78,7 +78,7 @@ function check_entry_id_link_document_id($dico_entry_id_prot_access, $document_i
         $add_article = '<a href="http://10.1.22.212/privatesite/add_pubmed.cgi?entry_id=' . $entry_id . '&id=' . $pmid . '&annotid=' . $annot_id . '" target="_blank">ADD_article</a>';
         if(!empty($check_doc_id_link))
         {
-            $check_pmid[$entry_id] = 'OK';
+            $check_pmid[$entry_id] = '<font color="green">OK</font>';
         }
         else
         {
@@ -157,11 +157,11 @@ function recovery_check_function_pmid($dico_entry_id_prot_access, $document_id, 
                 {
                     if(!array_key_exists($entry_id, $dico_check_pmid_function))
                     {
-                        $dico_check_pmid_function[$entry_id] = 'OK';
+                        $dico_check_pmid_function[$entry_id] = '<font color="green">OK</font>';
                     }
                     else
                     {
-                        $dico_check_pmid_function[$entry_id] .= '<br>' . 'OK';
+                        $dico_check_pmid_function[$entry_id] .= '<br>' . '<font color="green">OK</font>';
                     }
                 }
                 else
@@ -188,11 +188,11 @@ function recovery_check_function_pmid($dico_entry_id_prot_access, $document_id, 
                     {
                         if(!array_key_exists($entry_id, $dico_check_pmid_function))
                         {
-                            $dico_check_pmid_function[$entry_id] = 'N.A';
+                            $dico_check_pmid_function[$entry_id] = '<font color="red">N.A</font>';
                         }
                         else
                         {
-                            $dico_check_pmid_function[$entry_id] .= '<br>' . 'N.A';
+                            $dico_check_pmid_function[$entry_id] .= '<br>' . '<font color="red">N.A</font>';
                         }
                     }
                 }

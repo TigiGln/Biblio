@@ -99,6 +99,7 @@ else
                         echo "</pre>";*/
                         foreach($dico_entry_id_prot_access as $entry_id => $array_prot_access)
                         {
+                            $entry_id_link = "<a href='http://cazy212.afmb.local/privatesite/cazy_views.cgi?intype=entry&searchterm=" . $entry_id . "' target='_blank'>";
                             $name_prot_access = '';
                             echo "<tr id=line_" . $entry_id . "><td>";
                             for($i=0; $i<count($array_prot_access); $i++)
@@ -107,7 +108,7 @@ else
                                 echo  $array_prot_access[$i] . ' '. $delete . '<br>';
                                 $name_prot_access =  $array_prot_access[$i];  
                             }
-                            echo "</td><td>" . $entry_id . "</td><td>" . $dico_check_pmid[$entry_id] . "</td><td>";
+                            echo "</td><td>" . $entry_id_link  . $entry_id . "</td><td>" . $dico_check_pmid[$entry_id] . "</td><td>";
                             if(!empty($dico_fam_acc) AND !empty($dico_ec_num))
                             {
                                 for($i=0; $i<count($dico_fam_acc[$entry_id]); $i++)
@@ -125,14 +126,14 @@ else
                             {
                                 for($i=0; $i<count($dico_ec_num[$entry_id]); $i++)
                                 {
-                                    echo 'No module' . '/' . $dico_ec_num[$entry_id][$i] . '<br>';
+                                    echo '<font color="red">No module</font>' . '/' . $dico_ec_num[$entry_id][$i] . '<br>';
                                 }
                             }
                             else
                             {
                                 for($i=0; $i<count($dico_fam_acc[$entry_id]); $i++)
                                 {
-                                    echo  $dico_fam_acc[$entry_id][$i] . '/' . 'No EC_num' . '<br>';
+                                    echo  $dico_fam_acc[$entry_id][$i] . '/' . '<font color="red">No EC_num</font>' . '<br>';
                                         
                                 }
                             }

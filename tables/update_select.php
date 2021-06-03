@@ -38,12 +38,9 @@
             }
             if ($nb_prot_access > 0)
             {
-                echo "<br>" . $nb_prot_access . " protein accession numbers have been added<br>";//Returns the number of accession proteins added
+                echo "<div class='alert alert-info' role='alert'><br>" . $nb_prot_access . " protein accession numbers have been added<br></div>";//Returns the number of accession proteins added
             }
-            else
-            {
-                echo "These accession numbers are already linked to this article in the database<br>";
-            }
+            
             
         }
     }

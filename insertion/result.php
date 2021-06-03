@@ -123,6 +123,10 @@
                         //Displaying the rows of the results table.
                         echo "<tr><td>" .  $num_access . "</td>\n<td>" . $survol . trim($title) . "</a></td>\n<td>" . $survolauthor . $authors[0] . ", ... , " . end($authors) . "</a></td>\n<td>" . $check . "</td></tr>\n" ;
                     }
+                    else
+                    {
+                        echo " <div class='alert alert-danger' role='alert'>No articles could be retrieved from Pubmed</div>";
+                    }
                     $i++;
                 }
                 echo "</tbody></table>";

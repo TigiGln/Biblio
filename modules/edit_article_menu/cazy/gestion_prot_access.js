@@ -22,16 +22,16 @@ function add_prot_access(num_access, prot_access)
                 var data = this.response;
                 if(data.trim() == 'prot_access ajouté')
                 {
-                    info_add.innerHTML = 'Your accession has been added';
+                    info_add.innerHTML = "<div class='alert alert-info' role='alert'>Your accession has been added</div>";
                 }
                 else if (data.trim() == "Le numéro d'accession existe déjà")
                 {
-                    info_add.innerHTML = 'This number already exists';
+                    info_add.innerHTML = "<div class='alert alert-info' role='alert'>This number already exists</div>";
                 }
             }
             else 
             { //Si le serveur a eu une erreur
-                info_add.innerHTML = 'A problem has arisen';
+                info_add.innerHTML = "<div class='alert alert-danger' role='alert'>A problem has arisen</div>";
             }
         }
 
@@ -63,13 +63,13 @@ function delete_prot_access(prot_access)
                 var data = this.response;
                 if(data.trim() == 'prot_access delete')
                 {
-                    info_add.innerHTML = 'Your accession has been deleted';
+                    info_add.innerHTML = "<div class='alert alert-info' role='alert'>Your accession has been deleted</div>";
                     console.log(info_add);
                 }
             }
             else 
             { //Si le serveur a eu une erreur
-                info_add.innerHTML = 'A problem has arisen';
+                info_add.innerHTML = '<div class="alert alert-danger" role="alert">A problem has arisen</div>';
             }
         }
 
