@@ -243,5 +243,6 @@ To sum up:
 
 ### About utils/fromPMCID parser
 fromPMCID can fetch XML content of the article on pubmedcentral, Nevertheless we should rather use the concrete HTML when showing HTML article content. This way we can keep the HTML hierarchy from PMC and kept usefull features such as references links, images etc. Alas at PubMedCentral, they often change their tool, therefore depending of the date of the article some ids can differs. parser.config is used to solve theses issues. This way we can homogenize the data and parse more efficiently after. If you have a problem while getting a PMC HTML, please refers to instructions in fromPMCID.php and parser.config files to help you manage the issue. (most of the time you will need to simply add a special case in the parser. for example an article abstract may have id="a_b_s...". This still not exist in the parser, so you may add the following line:
->id="a_b_s<_>id="idm and rebuild the html.
+>id="a_b_s<_>id="idm 
+and rebuild the html.
 

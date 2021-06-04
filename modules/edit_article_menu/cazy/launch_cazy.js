@@ -1,3 +1,4 @@
+//asynchronous function to call the article-dependent cazy table (calls the cazy_table.php script in the div in cazy.php)
 function launch_table_cazy(num_access)
 {
     var url = "../modules/edit_article_menu/cazy/cazy_table.php";

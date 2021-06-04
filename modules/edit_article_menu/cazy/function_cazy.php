@@ -200,7 +200,6 @@ function recovery_check_function_pmid($dico_entry_id_prot_access, $document_id, 
         }
     }
     return $dico_check_pmid_function;
-
 }
 
 ?>

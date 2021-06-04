@@ -1,3 +1,4 @@
+//Layout when loading the table
 function load_lien()
 {
     newEltHead = document.createElement('script');
@@ -20,7 +21,7 @@ function load_lien()
     }
     
 }
-
+//link management depending on what is inserted in the ec_num input
 function add_ec_num(input)
 {
     //console.log(input.previousElementSibling);
@@ -40,7 +41,7 @@ function add_ec_num(input)
     }  
     
 }
-
+//management of the add button according to the data entered in the insertion input
 function listen_input(input_prot_access)
 {
     add_button = document.getElementById('add_button');

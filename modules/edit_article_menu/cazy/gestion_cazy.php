@@ -8,6 +8,7 @@ require "../../../POO/class_manager_bd.php";
     ob_end_clean();
 ?>
 <?php
+//function for adding the accession number to the database
 function add_prot_access($num_access, $prot_access, $manager)
 {
     if(!isset($num_access) AND !isset($prot_access))
@@ -42,6 +43,7 @@ function add_prot_access($num_access, $prot_access, $manager)
         
     }
 }
+//fonction de suppression du numéro d'accession dans la base de données
 function delete_prot_access($prot_access, $manager)
 {
     if(!isset($prot_access))

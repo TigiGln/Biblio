@@ -1,3 +1,4 @@
+//asynchronous function to add a number of protein accessions
 function add_prot_access(num_access, prot_access)
 {
     if (urlParams.get('ORIGIN'))
@@ -39,6 +40,7 @@ function add_prot_access(num_access, prot_access)
     http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     http.send();
 }
+//asynchronous function to delete a number of protein accessions
 function delete_prot_access(prot_access)
 {
     if (urlParams.get('ORIGIN'))
@@ -80,6 +82,7 @@ function delete_prot_access(prot_access)
 
 var queryString = window.location.search;
 var urlParams = new URLSearchParams(queryString);
+//click button  add function to call the asynchronous function and to perform table update tasks
 function click_add()
 {
     var info_add = document.getElementById('add_prot_access');
@@ -89,6 +92,7 @@ function click_add()
     reload_table_cazy();
     info_add.innerHTML = 'Your accession has been added';
 }
+//click button  del function to call the asynchronous function and to perform table update tasks
 function click_delete(protAccess)
 {
     
@@ -98,7 +102,7 @@ function click_delete(protAccess)
     var line = document.getElementById('line_' + protAccess[1]);
     table.deleteRow(line.rowIndex);
 }
-
+//function to reload the table only (div)
 function reload_table_cazy()
 {
     if (urlParams.get('ORIGIN'))

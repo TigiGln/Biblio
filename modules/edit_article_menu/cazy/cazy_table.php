@@ -25,9 +25,6 @@ else
     else
     {
         $pmid = $_GET["NUMACCESS"];
-        //$pmid = '28329766';
-        //$pmid = '33046698';
-        //$pmid = '32338906';
         //Récupération de l'id_article grâce au pmid dans la base interne
         $id_article = recovery_id_article($pmid, $manager);
         //Récupération du document_id grâce au pmid dans la base cazy
@@ -48,22 +45,14 @@ else
                 
                 //Récupération des entry_id lié à nos prot_access dans la base cazy
                 $dico_entry_id_prot_access = recovery_entry_id($array_prot_access, $manager_cazy);
-                /*echo "<pre>";
-                var_dump($dico_entry_id_prot_access);
-                echo "</pre>";*/
                 //Différence enetre deux array
                 $array_cazy = [];
+                //Accession numbers not found in cazy
                 foreach($dico_entry_id_prot_access as $array_prot_access_cazy)
                 {
                     $array_cazy = array_merge($array_cazy, $array_prot_access_cazy);
                 }
-                /*echo "<pre>";
-                var_dump($array_cazy);
-                echo "</pre>";*/
                 $array_diff = array_diff($array_prot_access, $array_cazy);
-                /*echo "<pre>";
-                var_dump($array_diff);
-                echo "</pre>";*/
                 if(!empty($array_diff))
                 {
                     
@@ -74,33 +63,23 @@ else
                         echo "<tr id=line_" . $prot_access . "><td>" . $prot_access . ' ' . $delete . "</td><td>$add_prot_access</td><td></td><td></td><td></td></tr>";
                     }
                 }
+                //Display of accession numbers found in cazy
                 if(count($array_diff) != count($array_prot_access))
                 {
                     if(!empty($dico_entry_id_prot_access))
                     {
-                        /*echo "<pre>";
-                        var_dump($dico_entry_id_prot_access);
-                        echo "</pre>"; */  
                         //Récupération du lien pmid lié à une entry_id dans la base cazy
                         $dico_check_pmid = check_entry_id_link_document_id($dico_entry_id_prot_access, $document_id, $pmid, $manager_cazy);
-                        //var_dump($dico_check_pmid);
                         //Récupération du nom du module pour chaque 
                         $dico_fam_acc = recovery_fam_acc($dico_entry_id_prot_access, $manager_cazy);
-                        /*echo "<pre>";
-                        var_dump($dico_fam_acc);
-                        echo "</pre>";*/
                         $dico_ec_num = recovery_ec_num($dico_entry_id_prot_access, $manager_cazy);
-                        /*echo "<pre>";
-                        var_dump($dico_ec_num);
-                        echo "</pre>";*/
                         $dico_check_pmid_function = recovery_check_function_pmid($dico_entry_id_prot_access, $document_id, $manager_cazy);
-                        /*echo "<pre>";
-                        var_dump($dico_check_pmid_function);
-                        echo "</pre>";*/
                         foreach($dico_entry_id_prot_access as $entry_id => $array_prot_access)
                         {
+                            //Creating the link to cazy for each entry
                             $entry_id_link = "<a href='http://cazy212.afmb.local/privatesite/cazy_views.cgi?intype=entry&searchterm=" . $entry_id . "' target='_blank'>";
                             $name_prot_access = '';
+                            //Display the table line by line, making the necessary checks
                             echo "<tr id=line_" . $entry_id . "><td>";
                             for($i=0; $i<count($array_prot_access); $i++)
                             {
@@ -108,7 +87,9 @@ else
                                 echo  $array_prot_access[$i] . ' '. $delete . '<br>';
                                 $name_prot_access =  $array_prot_access[$i];  
                             }
+                            //Display entry_id and check pmid
                             echo "</td><td>" . $entry_id_link  . $entry_id . "</td><td>" . $dico_check_pmid[$entry_id] . "</td><td>";
+                            //Display of functions associated with the entry_id with conditions according to the information retrieved (fam_acc and ec_num) 
                             if(!empty($dico_fam_acc) AND !empty($dico_ec_num))
                             {
                                 for($i=0; $i<count($dico_fam_acc[$entry_id]); $i++)
@@ -138,6 +119,7 @@ else
                                 }
                             }
                             echo "</td><td>";
+                            //check pmid_function
                             if(!empty($dico_check_pmid_function))
                             {
                                 echo $dico_check_pmid_function[$entry_id];
