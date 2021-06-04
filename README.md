@@ -199,7 +199,7 @@ fromPMCID can fetch XML content of the article on pubmedcentral, Nevertheless we
 
 # Cazy modules
 
-![Screenshot](pictures/Digram_cazy.png)
+![Screenshot](./pictures/Digram_cazy.png)
 
 The cazy module can be accessed in two different ways depending on whether the full text of the article is accessible through the PMCID. If the PMC is present, the cazy module is integrated in the set of modules of the Article page, otherwise the module opens in an annex page and the curator will have to use another tool to do his curation.
 This module represents a table of protein access numbers that will allow to retrieve the corresponding entries in the CAZy database and to make checks to determine if all the information on the document and the function associated with the entry. Thus there will be links to Cazy to make the necessary changes to ensure that a document linked to accession numbers is properly integrated into the Cazy database and that the data in the entry is up to date. 
