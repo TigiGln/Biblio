@@ -59,7 +59,7 @@ else
                     foreach($array_diff as $prot_access)
                     {
                         $delete = "<input type=button id=input_" . $prot_access . " value=Del onclick='click_delete(this)'>";
-                        $add_prot_access = '<a href="http://10.1.22.212/privatesite/new_entry.cgi?db_acc=' . $prot_access . '&fetch=1" target="_blank">ADD db_acc</a>';
+                        $add_prot_access = '<a href="http://10.1.22.212/privatesite/new_entry.cgi?db_acc=' . $prot_access . '&fetch=1" target="_blank">ADD entry_id</a>';
                         echo "<tr id=line_" . $prot_access . "><td>" . $prot_access . ' ' . $delete . "</td><td>$add_prot_access</td><td></td><td></td><td></td></tr>";
                     }
                 }
