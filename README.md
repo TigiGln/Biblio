@@ -1,13 +1,16 @@
 ![logo](https://i.ibb.co/k3XDvnW/logo-big.png)
 # Bibliography-Tools
+
  Website to improve collaborative management of scientific oversight: extraction, storage and access to publications in teams
 ## Context
+
 A problem in research is the considerable amount of time spent reading new articles, moving information forward, sharing with collaborators and others, storing data, making it accessible, etc. The aim of this project is to solve this problem by proposing an easy-to-use website solution that will allow us to search for articles, store them, work and share, keep important information visible and more, allowing everyone to use such a tool and to use tools that are useful for them thanks to a high level of modularity.
 
 This project is a joint project between the AFMB laboratory (Aix-Marseille Universities, Luminy Campus) and the BIAM Institute of the CEA in Cadarache (ST-Paul Lez Durance). We are two people working on the project: TigiGLN](https://github.com/TigiGln/Biblio) student in first year of master bioinformatics at Luminy for AFMB and [Eddy IKHLEF (Moka)](https://github.com/m-o-k-a) student in L3 computer science at Luminy for CEA.
 Our collaborative git repository: (https://github.com/TigiGln/Projet_stage)
 
 ## Requirement
+
 -  PHP 7.0 or above
 - MySql Server Database (use of the given database)*, **
 \* If you want to use another sql server, you need to edit a file called class_connexion.php, line 32.
@@ -89,18 +92,64 @@ Our collaborative git repository: (https://github.com/TigiGln/Projet_stage)
 ├── .gitattributes          # Github File
 └── README.md               # Github File
 ```
-# Common part:
+## Common part:
+
 When one arrives on the interface, one starts with a login page. After checking the user's identity (table user), he/she will be able to navigate between the pages of the interface thanks to a menu, initially reduced on the left. There are eight pages, with two specific pages (Insertion and Members Management) and six table pages with the same structure - access to the minimum essential information of the articles - but varying according to the status of the article and its assignment to a user. These table pages give access to an article page which displays the full text of the article, if it is freely available, so that it can be studied in greater depth by the user. On this article page, there are modules for annotating our article text, for taking notes, for evaluating the quality of the article, etc. 
 
-# The statute
+## The statute
+
 Status is a key concept in this tool. Four statuses have been defined depending on the state of readability of the article. To begin with, articles will be inserted with the status Undefined, as they have not yet been subject to human expertise to determine their relevance to our field of interest. The user will then have two options: either it is relevant and its status becomes Tasks; or it is not, and we transfer our article to the Rejected list. An article to be processed is read and annotated, and when the user has finished, it changes its status to processed or finished (Processed).
 
-# Users
+## Users
+
 The notion of user intervenes at two levels, to access the tool and to be assigned to each article. 
 Indeed, the ownership of an article is essential to avoid double curation, which would waste time and generate competing accesses to the annotation of the article. This conflict management has therefore been resolved by assigning a single user to each article. However, the user has the possibility of passing on an article to a more expert/available colleague. This concept of user assignment will make it possible to make a second filter in the various table pages.
 
-# helpers
-## About modules
+##Table page
+
+![Screenshot](./pictures/Diagram/Diagram_Table_Page.png)
+
+These pages are composed of a table where each line allows the visualisation of the important information of an article, in order to decide on its fate. These information/columns thus present: the accession number of the article (PMID), the title, the first and last author. Hovering features have been implemented to access the full abstract of the article (title hover), as well as the full list of authors and the journal/date (first and last author hover). This ergonomics will be present on all the table pages as well as in the search results on the insertion page. Finally, drop-down lists allow you to modify the status and the user. 
+
+#### These pages are:
+Undefined (visualization of its undefined articles)
+Tasks (visualization of its articles in process or to be processed)
+Undefined members (display of the undefined articles of others)
+members tasks (view the articles being processed by other users)
+processed (view all processed items)
+rejected (view all rejected items)
+
+## Insertion page
+
+![Screenshot](./pictures/Diagram/Diagram_insert_page.png)
+
+On this page you will find a form allowing you to transmit keywords to the server to make a request to the NCBI to search for the associated article(s) and retrieve the various relevant information. It is also possible to transmit a file with PMIDs (formatted one by one).
+
+formatted one per line). We are then redirected to a table with a similar structure as the article tables with the accession number, title, first and last author and a last column with a checkbox to select the article to be inserted in our database. Hovering over the title allows us to view the abstract and hovering over the two authors gives us all the authors of the publication, the journal and the year of publication. After choosing the article(s) to be inserted, the insert button unlocks and redirects us directly to the table page, whose status is undefined.
+
+## Members managements
+
+![Screenshot](./pictures/Diagram/Digram_Members_management.png)
+
+This page is used for user management and differs depending on whether you are an expert or an assistant. An assistant will only be able to change their password, whereas an expert will be able to add members, change user information or delete users.
+
+## Article page
+
+![Screenshot](./pictures/Diagram/Diagram_Page_Article.png)
+
+This page, which was largely created by Eddy, the co-developer of the tool, gives us access to the full text of the article retrieved either through the PMCID in Pubmed, the html version or the pdf version if it is free. On this page we also see a menu of different modules allowing us to interact either with the text directly or to add additional information to the database as we curate. All modules are launched asynchronously to avoid slow loading of the article. 
+
+## Cazy modules
+
+![Screenshot](./pictures/Diagram/Digram_cazy.png)
+
+The cazy module can be accessed in two different ways depending on whether the full text of the article is accessible through the PMCID. If the PMC is present, the cazy module is integrated in the set of modules of the Article page, otherwise the module opens in an annex page and the curator will have to use another tool to do his curation.
+This module represents a table of protein access numbers that will allow to retrieve the corresponding entries in the CAZy database and to make checks to determine if all the information on the document and the function associated with the entry. Thus there will be links to Cazy to make the necessary changes to ensure that a document linked to accession numbers is properly integrated into the Cazy database and that the data in the entry is up to date. 
+It will also be possible to add accession numbers that are not linked to the document despite their undeniable presence during the curation process.
+The diagram above shows the layout of the scripts to manage all these features.  
+
+## helpers
+### About modules
 >Terminology used in the existing vanilla modules are:
 >module-INTERACTIONS : For functions related to interaction with the server
 >module-WYSIWYG : For functions related to interaction with a WYSWIYG 
@@ -192,18 +241,7 @@ To sum up:
 4. getData.php process and return us a status code and a result if it was a success
 5. we handle the status code from javascript function
 
-## About utils/fromPMCID parser
+### About utils/fromPMCID parser
 fromPMCID can fetch XML content of the article on pubmedcentral, Nevertheless we should rather use the concrete HTML when showing HTML article content. This way we can keep the HTML hierarchy from PMC and kept usefull features such as references links, images etc. Alas at PubMedCentral, they often change their tool, therefore depending of the date of the article some ids can differs. parser.config is used to solve theses issues. This way we can homogenize the data and parse more efficiently after. If you have a problem while getting a PMC HTML, please refers to instructions in fromPMCID.php and parser.config files to help you manage the issue. (most of the time you will need to simply add a special case in the parser. for example an article abstract may have id="a_b_s...". This still not exist in the parser, so you may add the following line:
 >id="a_b_s<_>id="idm and rebuild the html.
-
-
-# Cazy modules
-
-![Screenshot](./pictures/Digram_cazy.png)
-
-The cazy module can be accessed in two different ways depending on whether the full text of the article is accessible through the PMCID. If the PMC is present, the cazy module is integrated in the set of modules of the Article page, otherwise the module opens in an annex page and the curator will have to use another tool to do his curation.
-This module represents a table of protein access numbers that will allow to retrieve the corresponding entries in the CAZy database and to make checks to determine if all the information on the document and the function associated with the entry. Thus there will be links to Cazy to make the necessary changes to ensure that a document linked to accession numbers is properly integrated into the Cazy database and that the data in the entry is up to date. 
-It will also be possible to add accession numbers that are not linked to the document despite their undeniable presence during the curation process.
-The diagram above shows the layout of the scripts to manage all these features.  
-
 
