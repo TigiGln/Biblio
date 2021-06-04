@@ -15,7 +15,7 @@ require('./views/header.php');
     <div class="text-center">
       <img src="./pictures/logo_big.png" width="150">
       <br>
-      <h1>Outil Bibilio</h1>
+      <h1>Outil Biblio</h1>
     </div>
     <br>
 <?php

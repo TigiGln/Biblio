@@ -18,6 +18,19 @@ Our collaborative git repository: (https://github.com/TigiGln/Projet_stage)
 - Web Server (Apache)
 - no IE, Edge Legacy or IE Legacy on edge (Bootstrap 5.0 functionnality will not fully work)
 -  Usage of [pdf2htmlEX](https://github.com/coolwanglu/pdf2htmlEX) (.exe and sources included for window, have yet to implement the equivalent for linux/macOS)
+- First, implement the database with the schema_biblio.sql file in the annexes folder
+- To launch the tool you need to modify line 27 of dbLoader.php in the views folder to put your database login details
+$_SESSION['connexiondb'] = new ConnexionDB("localhost", "name_database_mysql", "3306", "id_user_mysql", "password_mysql");
+For those who don't want it with the parameters for the Cazy database.
+modification:
+-> For result.php in the insertion folder
+- Deletion line 14
+- Deletion line 21 and 22
+- Modification line 148 -> replace ($list_num_access_already_present by $list_num_access_bd) 
+-> Removal of the Manager_cazy class in POO and the cazy module.
+For the function.php file in the tables folder
+- delete else line 126 to 129
+
 
 ## general diagram
 <!--![Screenshot](./pictures/Diagram/Diagram_my_part.png)-->

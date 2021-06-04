@@ -90,20 +90,20 @@ else
                             //Display entry_id and check pmid
                             echo "</td><td>" . $entry_id_link  . $entry_id . "</td><td>" . $dico_check_pmid[$entry_id] . "</td><td>";
                             //Display of functions associated with the entry_id with conditions according to the information retrieved (fam_acc and ec_num) 
-                            if(!empty($dico_fam_acc) AND !empty($dico_ec_num))
+                            if(!empty($dico_fam_acc[$entry_id]) AND !empty($dico_ec_num[$entry_id]))
                             {
                                 for($i=0; $i<count($dico_fam_acc[$entry_id]); $i++)
                                 {
                                     echo  $dico_fam_acc[$entry_id][$i] . '/' . $dico_ec_num[$entry_id][$i] . '<br>';     
                                 }
                             }
-                            else if(empty($dico_fam_acc) AND empty($dico_ec_num))
+                            else if(empty($dico_fam_acc[$entry_id]) AND empty($dico_ec_num[$entry_id]))
                             {
                                 $input_ec_num = "<input type='text' oninput='add_ec_num(this)' class='ec_num' id='" . $name_prot_access ."' placeholder='Enter ec_num' size='10'>";
                                 $lien_add_func = '<a class= "lien_add_func" href="http://10.1.22.212/privatesite/add_entryfunct.cgi?entry_id=' . $entry_id . '&edit=1&ec_num=" target="_blank">Add_func</a>';
                                 echo $lien_add_func . ' ' . $input_ec_num;
                             }
-                            else if(empty($dico_fam_acc) AND !empty($dico_ec_num))
+                            else if(empty($dico_fam_acc[$entry_id]) AND !empty($dico_ec_num[$entry_id]))
                             {
                                 for($i=0; $i<count($dico_ec_num[$entry_id]); $i++)
                                 {
@@ -120,7 +120,7 @@ else
                             }
                             echo "</td><td>";
                             //check pmid_function
-                            if(!empty($dico_check_pmid_function))
+                            if(!empty($dico_check_pmid_function[$entry_id]))
                             {
                                 echo $dico_check_pmid_function[$entry_id];
                             }
