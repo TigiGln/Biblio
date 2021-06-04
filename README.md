@@ -2,16 +2,17 @@
 # Bibliography-Tools
  Website to improve collaborative management of scientific oversight: extraction, storage and access to publications in teams
 ## Context
-A problematic is present in research, which is the vast amount of time spent into reading new articles, push some information forward, share with collaborators and alike, store the data, make it accessible, etc. This project’s aim is to solve this issue by proposing an easy-to-use website solution that will allow us to search articles, store them, work and share, keep the important information in evidence and more, allowing everyone to use such a tool and to use useful tools for them thanks to a high level of modularity.
+A problem in research is the considerable amount of time spent reading new articles, moving information forward, sharing with collaborators and others, storing data, making it accessible, etc. The aim of this project is to solve this problem by proposing an easy-to-use website solution that will allow us to search for articles, store them, work and share, keep important information visible and more, allowing everyone to use such a tool and to use tools that are useful for them thanks to a high level of modularity.
 
-This project is a joint project between the AFMB laboratory (Aix-Marseille Universities, Luminy’s Campus) and the BIAM Insitute from the CEA of Cadarache (ST-Paul Lez Durance). Two of us are, therefore working on the project: [TigiGLN](https://github.com/TigiGln/Projet_stage) a student in year one bioinformatics master degree at Luminy for the AFMB and [Eddy IKHLEF (Moka)](https://github.com/m-o-k-a) for the CEA.
+This project is a joint project between the AFMB laboratory (Aix-Marseille Universities, Luminy Campus) and the BIAM Institute of the CEA in Cadarache (ST-Paul Lez Durance). We are two people working on the project: TigiGLN](https://github.com/TigiGln/Biblio) student in first year of master bioinformatics at Luminy for AFMB and [Eddy IKHLEF (Moka)](https://github.com/m-o-k-a) student in L3 computer science at Luminy for CEA.
+Our collaborative git repository: (https://github.com/TigiGln/Projet_stage)
 
 ## Requirement
 -  PHP 7.0 or above
 - MySql Server Database (use of the given database)*, **
 \* If you want to use another sql server, you need to edit a file called class_connexion.php, line 32.
 \*\* The only user that exist on the given database is: username=Admin, email=admin@root.com, password=root, profile=expert
-- Web Server (Apache, nginx, ...)
+- Web Server (Apache)
 - no IE, Edge Legacy or IE Legacy on edge (Bootstrap 5.0 functionnality will not fully work)
 -  Usage of [pdf2htmlEX](https://github.com/coolwanglu/pdf2htmlEX) (.exe and sources included for window, have yet to implement the equivalent for linux/macOS)
 
@@ -88,6 +89,15 @@ This project is a joint project between the AFMB laboratory (Aix-Marseille Unive
 ├── .gitattributes          # Github File
 └── README.md               # Github File
 ```
+# Common part:
+When one arrives on the interface, one starts with a login page. After checking the user's identity (table user), he/she will be able to navigate between the pages of the interface thanks to a menu, initially reduced on the left. There are eight pages, with two specific pages (Insertion and Members Management) and six table pages with the same structure - access to the minimum essential information of the articles - but varying according to the status of the article and its assignment to a user. These table pages give access to an article page which displays the full text of the article, if it is freely available, so that it can be studied in greater depth by the user. On this article page, there are modules for annotating our article text, for taking notes, for evaluating the quality of the article, etc. 
+
+# The statute
+Status is a key concept in this tool. Four statuses have been defined depending on the state of readability of the article. To begin with, articles will be inserted with the status Undefined, as they have not yet been subject to human expertise to determine their relevance to our field of interest. The user will then have two options: either it is relevant and its status becomes Tasks; or it is not, and we transfer our article to the Rejected list. An article to be processed is read and annotated, and when the user has finished, it changes its status to processed or finished (Processed).
+
+# Users
+The notion of user intervenes at two levels, to access the tool and to be assigned to each article. 
+Indeed, the ownership of an article is essential to avoid double curation, which would waste time and generate competing accesses to the annotation of the article. This conflict management has therefore been resolved by assigning a single user to each article. However, the user has the possibility of passing on an article to a more expert/available colleague. This concept of user assignment will make it possible to make a second filter in the various table pages.
 
 # helpers
 ## About modules
@@ -184,6 +194,16 @@ To sum up:
 
 ## About utils/fromPMCID parser
 fromPMCID can fetch XML content of the article on pubmedcentral, Nevertheless we should rather use the concrete HTML when showing HTML article content. This way we can keep the HTML hierarchy from PMC and kept usefull features such as references links, images etc. Alas at PubMedCentral, they often change their tool, therefore depending of the date of the article some ids can differs. parser.config is used to solve theses issues. This way we can homogenize the data and parse more efficiently after. If you have a problem while getting a PMC HTML, please refers to instructions in fromPMCID.php and parser.config files to help you manage the issue. (most of the time you will need to simply add a special case in the parser. for example an article abstract may have id="a_b_s...". This still not exist in the parser, so you may add the following line:
->id="a_b_s<_>id="idm
+>id="a_b_s<_>id="idm and rebuild the html.
 
-and rebuild the html.
+
+# Cazy modules
+
+![Screenshot](pictures/Digram_cazy.png)
+
+The cazy module can be accessed in two different ways depending on whether the full text of the article is accessible through the PMCID. If the PMC is present, the cazy module is integrated in the set of modules of the Article page, otherwise the module opens in an annex page and the curator will have to use another tool to do his curation.
+This module represents a table of protein access numbers that will allow to retrieve the corresponding entries in the CAZy database and to make checks to determine if all the information on the document and the function associated with the entry. Thus there will be links to Cazy to make the necessary changes to ensure that a document linked to accession numbers is properly integrated into the Cazy database and that the data in the entry is up to date. 
+It will also be possible to add accession numbers that are not linked to the document despite their undeniable presence during the curation process.
+The diagram above shows the layout of the scripts to manage all these features.  
+
+
