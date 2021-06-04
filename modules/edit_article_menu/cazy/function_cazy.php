@@ -171,7 +171,7 @@ function recovery_check_function_pmid($dico_entry_id_prot_access, $document_id, 
                     $request_ec_num_check->execute();
                     $ec_num_find = $request_ec_num_check->fetch();
                     $ec_num_find = $ec_num_find['ec_num'];
-                    $regex = preg_match("/^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$/", $ec_num_find);
+                    $regex = preg_match("/^[0-9]+\.[0-9]+\.[0-9]+\.[0-9-]+$/", $ec_num_find);
                     if ($regex == 1)
                     {
                         $lien_add_pmid_func = '<a href="http://10.1.22.212/privatesite/pub_func.cgi?edit=1&entry_id=' . $entry_id . '" target="_blank">Add_pub_func</a>';

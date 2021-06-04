@@ -19,6 +19,9 @@ Our collaborative git repository: (https://github.com/TigiGln/Projet_stage)
 - no IE, Edge Legacy or IE Legacy on edge (Bootstrap 5.0 functionnality will not fully work)
 -  Usage of [pdf2htmlEX](https://github.com/coolwanglu/pdf2htmlEX) (.exe and sources included for window, have yet to implement the equivalent for linux/macOS)
 
+## general diagram
+![Screenshot](./pictures/Diagram/Diagram of my part.png)
+
 ## Hierarchy (Vanilla)
 ```
 .

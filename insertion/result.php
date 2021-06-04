@@ -130,7 +130,7 @@
                     $i++;
                 }
                 echo "</tbody></table>";
-                echo "<p><input class='btn btn-outline-success' id='insert' type='submit' value='Insert'></p>";
+                echo "<p><input class='btn btn-outline-success' id='insert' type='submit' value='Insert' style='float:right;'></p>";
 
             }
             else

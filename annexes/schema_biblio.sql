@@ -39,7 +39,6 @@ CREATE TABLE `article` (
   `pmcid` varchar(50) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `html_xml` mediumtext DEFAULT NULL,
-  `general_note` mediumtext DEFAULT NULL,
   `user` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
