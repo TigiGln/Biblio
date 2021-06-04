@@ -20,7 +20,7 @@ Our collaborative git repository: (https://github.com/TigiGln/Projet_stage)
 -  Usage of [pdf2htmlEX](https://github.com/coolwanglu/pdf2htmlEX) (.exe and sources included for window, have yet to implement the equivalent for linux/macOS)
 
 ## general diagram
-![Screenshot](./pictures/Diagram/Diagram of my part.png)
+![Screenshot](./pictures/Diagram/Diagram_my_part.png)
 
 ## Hierarchy (Vanilla)
 ```
