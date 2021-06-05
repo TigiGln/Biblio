@@ -10,7 +10,8 @@
 	refreshPopovers()
 </script>
 <?php
-	$folder = "/Biblio";
+	$folder = explode('/', $_SERVER['HTTP_REFERER']);
+	$folder = $folder[3];
 	//Adding JavaScript scripts depending on where you are in the software
 	if($_SERVER["SCRIPT_NAME"] == $folder. "/insertion/result.php")
 	{

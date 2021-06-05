@@ -33,7 +33,7 @@ For the function.php file in the tables folder
 
 
 ## general diagram
-<!--![Screenshot](./pictures/Diagram/Diagram_my_part.png)-->
+![Screenshot](./pictures/Diagram/diagramme_outil.png)
 
 ## Hierarchy (Vanilla)
 ```

@@ -36,12 +36,15 @@ class UserConnection
      * @author Eddy Ikhlef <eddy.ikhlef@protonmail.com>
      * @return void
      */
-    public function isValid($nb_article) 
+    public function isValid($manager) 
     {
         if(strpos(strtolower('/'.$_SERVER["PHP_SELF"]), strtolower('/index.php'))) 
         {
             if((isset($_SESSION['username']) && isset($_SESSION['userName']) && isset($_SESSION['userID'])) || $this->loadCookieSession()) 
             {
+				$id_user = $_SESSION['userID'];
+				$search_article = $manager->db->query("SELECT * FROM article INNER JOIN user ON article.user = user.id_user WHERE id_user = $id_user");
+				$nb_article = $search_article->rowCount();
                 if($nb_article == 0)
                 {
                     header('Location: '.'./insertion/form.php');
