@@ -34,6 +34,7 @@ else
             echo '<form method="post" action = "#" enctype="multipart/form-data" >';
             echo "<input type='text' id= 'input_prot_access' placeholder='Please Enter prot_access' oninput= 'listen_input(this)'>";
             echo "<input type='button' id='add_button' value='Add' onclick='click_add()'>";
+			echo "<input type='button' id='refresh' value='Refresh' style= 'display: block;' onclick='reload_table_cazy()'>";
             echo "<a href='#footer' style='float: right;'> Bottom Page</a>";
             echo "<a id='header'></a>";
             echo '<table class="table table-responsive table-hover table-bordered" id="table_cazy">';
@@ -63,6 +64,7 @@ else
                         echo "<tr id=line_" . $prot_access . "><td>" . $prot_access . ' ' . $delete . "</td><td>$add_prot_access</td><td></td><td></td><td></td></tr>";
                     }
                 }
+				exit;
                 //Display of accession numbers found in cazy
                 if(count($array_diff) != count($array_prot_access))
                 {
