@@ -1,7 +1,7 @@
 <?php
 require "../../../POO/manager_cazy.class.php";
 require "./function_cazy.php";
-$manager_cazy = new ManagerCazy('10.1.22.207', 'cazy_7', 'glyco', 'Horror3');
+//$manager_cazy = new ManagerCazy('10.1.22.207', 'cazy_7', 'glyco', 'Horror3');
 if(isset($_GET['body']))
 {
 	include('../../../views/header.php');
@@ -28,7 +28,7 @@ else
         //Récupération de l'id_article grâce au pmid dans la base interne
         $id_article = recovery_id_article($pmid, $manager);
         //Récupération du document_id grâce au pmid dans la base cazy
-        $document_id = recovery_document_id($pmid, $manager_cazy);
+        //$document_id = recovery_document_id($pmid, $manager_cazy);
         if(!empty($id_article))
         {
             echo '<form method="post" action = "#" enctype="multipart/form-data" >';
@@ -41,7 +41,7 @@ else
             echo "<thead><tr class='table-info'><th class='sort_column'>Num Accession</th><th class='sort_column'>Entry ID Cazy</th><th class='sort_column'>check_pmid</th><th class ='sort_column'>check_func</th><th class='sort_column'>check_pmid_func</th></tr></thead><tbody>";
             //Récupération des prot_access grâce à l'id_article dans la base interne
             $array_prot_access = recovery_prot_access_table($id_article, $manager);
-            if(!empty($array_prot_access))
+            if(!empty($array_prot_access) AND isset($manager_cazy))
             {
                 
                 //Récupération des entry_id lié à nos prot_access dans la base cazy

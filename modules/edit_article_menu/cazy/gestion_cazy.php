@@ -17,29 +17,36 @@ function add_prot_access($num_access, $prot_access, $manager)
     }
     else
     {
-        $num_access = strip_tags($num_access);
-        $prot_access = strip_tags($prot_access);
-        $id_article_in_article = $manager->db->prepare("SELECT id_article FROM article WHERE num_access = '$num_access'");
-        $id_article_in_article->execute();
-        $id_article = $id_article_in_article->fetch();
-        $id_article = $id_article['id_article'];
-        if ($manager->get_exist_multiple('prot_access_table', 'id_article', $id_article, 'prot_access',  $prot_access) == false)
-        {
-            $valid = $manager->add_prot_access('prot_access_table', $id_article, $prot_access, null);
-            if($valid != "PDO::errorInfo():")
-            {
-                echo 'add prot_access';
-            }
-            else
-            {
-                echo "the accession number could not be added due to an error"; 
-            }
+		if($num_access != '' AND $prot_access != '')
+		{
+			$num_access = strip_tags($num_access);
+			$prot_access = strip_tags($prot_access);
+			$id_article_in_article = $manager->db->prepare("SELECT id_article FROM article WHERE num_access = '$num_access'");
+			$id_article_in_article->execute();
+			$id_article = $id_article_in_article->fetch();
+			$id_article = $id_article['id_article'];
+			if ($manager->get_exist_multiple('prot_access_table', 'id_article', $id_article, 'prot_access',  $prot_access) == false)
+			{
+				$valid = $manager->add_prot_access('prot_access_table', $id_article, $prot_access, null);
+				if($valid != "PDO::errorInfo():")
+				{
+					echo 'add prot_access';
+				}
+				else
+				{
+					echo "the accession number could not be added due to an error"; 
+				}
 
-        }
-        else
-        {
-            echo "The accession number already exists"; 
-        }
+			}
+			else
+			{
+				echo "The accession number already exists"; 
+			}
+		}
+		else
+		{
+			http_response_code(404);
+		}
         
     }
 }
