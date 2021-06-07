@@ -11,7 +11,6 @@ retmax.addEventListener('keyup', function(e)
     if(/^[^0-9]+$/.test(parseInt(e.target.value)))
     {
         e.target.style.border = '1px solid red';
-        //e.target.value = 1;
         textarea.setAttribute('disabled', true);
     }
     else
@@ -58,7 +57,7 @@ select.addEventListener('input', function(e)
         textarea.setAttribute('disabled', true);
         submit.setAttribute('disabled', true);
     }
-    if (changeSelect == "Author")
+    if (changeSelect == "Author" || changeSelect == "dp")
     {
         retmax.removeAttribute('disabled');
     }
