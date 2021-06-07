@@ -1,7 +1,7 @@
 <?php
 require "../../../POO/manager_cazy.class.php";
 require "./function_cazy.php";
-//$manager_cazy = new ManagerCazy('10.1.22.207', 'cazy_7', 'glyco', 'Horror3');
+$manager_cazy = new ManagerCazy('10.1.22.207', 'cazy_7', 'glyco', 'Horror3');
 if(isset($_GET['body']))
 {
 	include('../../../views/header.php');
