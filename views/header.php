@@ -1,5 +1,5 @@
 <?php
-  $position;
+  $position = "";
   if(file_exists("./POO")) 
   {   //Index and the like
     $position = ".";
@@ -7,6 +7,10 @@
   else if(file_exists("../POO")) 
   { //pages and the like
     $position = "..";
+  }
+  else if(file_exists("../../POO"))
+  { //pages and the like
+    $position = "../..";
   }
   else if(file_exists("../../../POO")) 
   { //modules and the like

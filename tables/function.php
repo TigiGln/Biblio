@@ -93,6 +93,10 @@ function search_table_status($status, $user, $manager)
     {
         echo "<table class='table table-responsive table-hover table-bordered'><thead><tr class='table-info'><th class='sortable' width=12.5%>PMID</th><th>PMCID</th><th class = 'sort_column'>Title</th><th width=20% class = 'sort_column'>Authors</th><th width=12.5%>Status</th><th width=12.5%>User</th><th width=12.5%>Notes</th></tr></thead><tbody>";
     }
+    else if ($tag_status == 'rejected')
+    {
+        echo "<table class='table table-responsive table-hover table-bordered'><thead><tr class='table-info'><th class='sortable' width=12.5%>PMID</th><th class = 'sort_column'>Title</th><th width=20% class = 'sort_column'>Authors</th><th width=12.5%>Status</th><th width=12.5%>User</th><th>Delete</th></tr></thead><tbody>";
+    }
     else
     {
         echo "<table class='table table-responsive table-hover table-bordered'><thead><tr class='table-info'><th width=12.5%>PMID</th><th width=30% class = 'sort_column'>Title</th><th width=20% class = 'sort_column'>Authors</th><th width=12.5%>Status</th><th width=12.5%>User</th></tr></thead><tbody>";
@@ -172,6 +176,11 @@ function search_table_status($status, $user, $manager)
                 $notes = "No note available for the moment";
             }
             echo "<tr id = 'line_$num_access'><td width=12.5%>" . $lien_pubmed .  $num_access . "</a></td><td>" . $pmcid ."</td><td width=30%>" . $survol_title . $title . "</a></td><td width= 20%>" . $survolauthor . $list_authors[1] . ", ... , " . end($list_authors) . "</a></td><td width=12.5%>" . $list_status . "</td><td width=12.5%>" . $list_user . "</td><td width=12.5%>" . $notes . "</td></tr>" ;
+        }
+        else if($tag_status == 'rejected')
+        {
+            $delete = "<input type='button' onclick='delete_article($num_access)' value='Del' id='delete_" . $num_access . "'>";
+            echo "<tr id = 'line_$num_access'><td width=12.5%>" . $lien_pubmed .  $num_access . "</a></td><td width=30%>" . $survol_title . $title . "</a></td><td width= 20%>" . $survolauthor . $list_authors[1] . ", ... , " . end($list_authors) . "</a></td><td width=12.5%>" . $list_status . "</td><td width=12.5%>" . $list_user . "</td><td>" . $delete . "</td></tr>" ; 
         }
         else
         {

@@ -10,17 +10,12 @@
      * @author Eddy Ikhlef <eddy.ikhlef@protonmail.com>
      */
 
-     if(isset($_GET['doi']) && isset($_GET['format'])) 
-     {
+     if(isset($_GET['doi']) && isset($_GET['format'])) {
         $xml_data = DOI_CrossRef($_GET['doi']);
-        if(isset($xml_data->message->link->item0->URL[0])) 
-        {
+        if(isset($xml_data->message->link->item0->URL[0]) && !empty($_GET['format'])) {
             echo DOI_parse($_GET['doi'], $xml_data->message->link->item0->URL[0], $_GET['format']);
         } 
-        else 
-        { 
-            http_response_code(404); exit(10); 
-        }
+        else { http_response_code(404); }
      } 
 
 
@@ -50,7 +45,7 @@
 
     function DOI_parse($doi, $url, $format) {
         switch($url) {
-            case (preg_match('/\.pdf$/', $url)? true : false):
+            case (preg_match('/(\.pdf$)|(Pdf\/)|(pdf\/)/', $url)? true : false):
                 /* Available links features .pdf directly */
                 if(isset($_GET['verbose'])) echo "Article Available directly in pdf from: ".$url."<br>";
                 return DOI_parse_pdf($url, $format);
@@ -115,7 +110,7 @@
                 return "";
                 break;
             default:
-                //echo "Need to implement parsing pdf for: ".$format;
+                //echo "Need to implement parsing for: ".$format;
                 return false;
         }
     }

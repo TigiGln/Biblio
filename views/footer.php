@@ -20,6 +20,7 @@
 	if($_SERVER["SCRIPT_NAME"]== $folder . "/tables/articles.php")
 	{
 		echo '<script src="' .  $position . '/tables/update_select.js"></script>';
+		echo '<script src="' .  $position . '/tables/delete_article/delete_article.js"></script>';
 	}
 	if ($_SERVER["SCRIPT_NAME"] == $folder . "/insertion/result.php" || $_SERVER["SCRIPT_NAME"] == $folder . "/tables/articles.php" || $_SERVER["SCRIPT_NAME"] == $folder . "/modules/edit_article_menu/cazy/cazy_table.php")
 	{

@@ -68,8 +68,11 @@ function recovery($output)
         {
             foreach ($authors_no_empty as $name)
             {
-                $authors[] = strval($name->LastName) . " " . strval($name->Initials);
-                $authorsList[] = strval($name->LastName) . " " . strval($name->ForeName);
+				if($name->LastName != '' AND $name->Initials != '' AND $name->ForeName != '')
+				{
+					$authors[] = strval($name->LastName) . " " . strval($name->Initials);
+					$authorsList[] = strval($name->LastName) . " " . strval($name->ForeName);
+				}
             }  
         }
         $journal = strval($output1->PubmedArticle->MedlineCitation->Article->Journal->Title);

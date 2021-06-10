@@ -11,15 +11,15 @@
     include('../views/header.php'); //import header
     $menu = new MainMenu('Insertion', $manager);//Instantiation du menu
     $menu->write();
-    $manager_cazy = new ManagerCazy('10.1.22.207', 'extern_db', 'glyco', 'Horror3');//instantiation of the cazy manager
+    //$manager_cazy = new ManagerCazy('10.1.22.207', 'extern_db', 'glyco', 'Horror3');//instantiation of the cazy manager
 ?>
 <div class='flex p-4 w-100 overflow-auto' style='height: 100vh;'>
     <form method="post" action="insert.php" enctype="multipart/form-data">
         <?php
             //creation of the list to be checked by JavaScript to avoid duplication
             $list_num_access_bd = $manager->get_num_access('num_access', 'article');//query the database to retrieve the present access_numbers
-            $list_num_access_cazy = $manager_cazy->get_numAccess('pub_db_acc', 'pub_document');//request to recover cazy's pmid
-            $list_num_access_already_present = array_values(array_unique(array_merge($list_num_access_bd, $list_num_access_cazy)));//creation of a list of unduplicated pmids that are in both databases
+            //$list_num_access_cazy = $manager_cazy->get_numAccess('pub_db_acc', 'pub_document');//request to recover cazy's pmid
+            //$list_num_access_already_present = array_values(array_unique(array_merge($list_num_access_bd, $list_num_access_cazy)));//creation of a list of unduplicated pmids that are in both databases
             $pmid = "";
             $listpmid = [];
             $list_objects = [];
@@ -145,7 +145,7 @@
     </form>
 </div>
         <script>
-            var listNumAccessDb = <?php echo json_encode($list_num_access_already_present); ?>;//transfer the list to JavaScript to block the insertion of those already present in one of the two databases 
+            var listNumAccessDb = <?php echo json_encode($list_num_access_bd); ?>;//transfer the list to JavaScript to block the insertion of those already present in one of the two databases 
         </script>
 <?php
          
