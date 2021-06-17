@@ -11,7 +11,6 @@ require('./views/header.php');
 
 <link href="./css/signIn.css" rel="stylesheet">
 <main class="form-signin">
-  <form name="signInForm">
     <div class="text-center">
       <img src="./pictures/logo_big.png" width="150">
       <br>
@@ -21,21 +20,21 @@ require('./views/header.php');
 <?php
 require("./POO/class_saveload_strategies.php");
 $saveload = new SaveLoadStrategies($position, $manager);
-if(isset($_GET['loginValue']) && isset($_GET['password'])) 
+if(isset($_POST['loginValue']) && isset($_POST['password'])) 
 {
     /* check if loginValue exist */
-    if(filter_var($_GET['loginValue'], FILTER_VALIDATE_EMAIL)) 
+    if(filter_var($_POST['loginValue'], FILTER_VALIDATE_EMAIL)) 
     {
         $cols = array(); 
         array_push($cols, "email");
         $conditions = array(); 
-        array_push($conditions, array("email", $_GET['loginValue']));
+        array_push($conditions, array("email", $_POST['loginValue']));
     } 
     else 
     {
         $cols = array(); array_push($cols, "name_user");
         $conditions = array(); 
-        array_push($conditions, array("name_user", $_GET['loginValue']));
+        array_push($conditions, array("name_user", $_POST['loginValue']));
     }
     if(empty($saveload->loadAsDB("user", $cols, $conditions, null))) 
     {
@@ -46,20 +45,20 @@ if(isset($_GET['loginValue']) && isset($_GET['password']))
     {
         $cols = array(); 
         array_push($cols, "id_user", "email", "name_user", "password");
-        if(filter_var($_GET['loginValue'], FILTER_VALIDATE_EMAIL)) 
+        if(filter_var($_POST['loginValue'], FILTER_VALIDATE_EMAIL)) 
         {
             $conditions = array(); 
-            array_push($conditions, array("email", $_GET['loginValue']));
+            array_push($conditions, array("email", $_POST['loginValue']));
         } 
         else 
         {
             $conditions = array(); 
-            array_push($conditions, array("name_user", $_GET['loginValue']));
+            array_push($conditions, array("name_user", $_POST['loginValue']));
         }
         $res = $saveload->loadAsDB("user", $cols, $conditions, null);
-        if(empty($res) || !password_verify($_GET['password'], $res[0]['password'])) 
+        if(empty($res) || !password_verify($_POST['password'], $res[0]['password'])) 
         {
-            $GLOBALS['connectionError'] = "Wrong password, please retry: ".password_verify($_GET['password'], $res[0]['password']);
+            $GLOBALS['connectionError'] = "Wrong password, please retry: ".password_verify($_POST['password'], $res[0]['password']);
         } 
         else 
         {
@@ -68,7 +67,7 @@ if(isset($_GET['loginValue']) && isset($_GET['password']))
             $_SESSION['username'] = $res[0]['name_user'];
             $_SESSION['userName'] = $res[0]['name_user'];
             $_SESSION['userID'] = $res[0]['id_user'];
-            if(isset($_GET['rememberMe'])) 
+            if(isset($_POST['rememberMe'])) 
             {
                 $userConnection->generateCookie(array($res[0]['id_user'], $res[0]['name_user']));
             }
@@ -82,7 +81,7 @@ if(isset($GLOBALS['connectionError']))
     echo '<div class="alert alert-danger" role="alert">'.$GLOBALS['connectionError'].'</div>';
 }
 ?>
-    <form method="get" action="form_connection.php">
+    <form method="POST" action="index.php">
         <p class="form-floating">
             <input class="form-control" type="text" name="loginValue" id="email" required="required"> 
             <label for="name_user">Email or Username</label>
