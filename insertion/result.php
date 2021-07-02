@@ -11,7 +11,7 @@
     include('../views/header.php'); //import header
     $menu = new MainMenu('Insertion', $manager);//Instantiation du menu
     $menu->write();
-    //$manager_cazy = new ManagerCazy('10.1.22.207', 'extern_db', 'glyco', 'Horror3');//instantiation of the cazy manager
+    //$manager_cazy = new ManagerCazy('host', 'db', 'login', 'password');//instantiation of the cazy manager
 ?>
 <div class='flex p-4 w-100 overflow-auto' style='height: 100vh;'>
     <form method="post" action="insert.php" enctype="multipart/form-data">
