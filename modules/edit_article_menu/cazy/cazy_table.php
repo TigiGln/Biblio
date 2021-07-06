@@ -64,7 +64,6 @@ else
                         echo "<tr id=line_" . $prot_access . "><td>" . $prot_access . ' ' . $delete . "</td><td>$add_prot_access</td><td></td><td></td><td></td></tr>";
                     }
                 }
-				exit;
                 //Display of accession numbers found in cazy
                 if(count($array_diff) != count($array_prot_access))
                 {
